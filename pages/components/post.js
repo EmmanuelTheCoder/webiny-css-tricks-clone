@@ -7,6 +7,7 @@ function Post() {
     // use context consumer to get selected post
     const post = useContext(ProductContext)
 
+
     const text = () =>{
 
         const textContent = post.getSelectedPost.body.map(res => {
@@ -36,7 +37,8 @@ function Post() {
         
         <Header />
 
-       
+       {post.getSelectedPost && (
+        <div>
         <p className='tag'>{post.getSelectedPost?.tag[0]}</p>
         <h1 className='title'>{post.getSelectedPost.title}</h1>
 
@@ -52,7 +54,8 @@ function Post() {
         <div className="post-content">
                 {text()}
         </div>
-
+        </div>
+        )}
     </div>
     
     

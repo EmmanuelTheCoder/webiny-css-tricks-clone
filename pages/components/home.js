@@ -1,6 +1,7 @@
 import React, {useContext} from 'react'
 import {ProductContext} from '../context'
 import Link from 'next/link'
+import Image from 'next/image'
 
 const Home = () => {
    
@@ -26,10 +27,12 @@ const Home = () => {
                             </Link>
                             <p className='post-intro'>{getFirstPostText}</p>
                             <div className='author-info'>
-                                <img src={getPost?.post[0]?.authorsPhoto} 
-                                alt="avatar" 
-                                className='avatar'
+                            {getPost?.post[0]?.authorsPhoto.length > 0 && (
+                                <Image src={getPost?.post[0]?.authorsPhoto} alt="avatar" className='avatar' width={40} height={40}
+                                layout="fixed"
                                 />
+                               
+                                )}
 
                                 <p className="author">{getPost?.post[0]?.author}</p>
                                 <p className="date">{getPost?.post[0]?.date}</p>
@@ -55,7 +58,9 @@ const Home = () => {
 
                         <p className='aside-tag'>{res.tag[0]}</p>
                         <div className='author-info firstFourAvatar'>
-                            <img src={res.authorsPhoto} className="avatar" alt="avatar" />
+                            <Image src={res.authorsPhoto} 
+                            className="avatar" alt="avatar" width={40} 
+                            height={40} layout="fixed" />
                             <p>{res.author}</p>
 
                         </div>
@@ -82,9 +87,8 @@ const Home = () => {
                                         <p className='post-intro'>{text}</p>
                                         <div className='author-info'>
                                             
-                                            <img src={res.authorsPhoto} 
-                                            alt="avatar" 
-                                            className='avatar'
+                                            <Image src={res.authorsPhoto} alt="avatar" className='avatar' width={40} height={40}
+                                            layout="fixed"
                                             />
 
                                             <p className="author">{res.author}</p>

@@ -1,7 +1,14 @@
-import '../styles/globals.css'
+import '../styles/App.css';
+import {ProductProvider} from './context'
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return(
+    <ProductProvider>
+
+      <Component {...pageProps} />
+    </ProductProvider>
+
+  )
 }
 
-export default MyApp
+export default MyApp 

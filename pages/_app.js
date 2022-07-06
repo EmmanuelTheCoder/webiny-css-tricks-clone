@@ -1,5 +1,5 @@
 import '../styles/App.css';
-import {ProductProvider} from './context'
+import ProductProvider from '../lib/context'
 
 function MyApp({ Component, pageProps }) {
   return(

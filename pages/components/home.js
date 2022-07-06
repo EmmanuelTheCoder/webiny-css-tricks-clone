@@ -1,5 +1,5 @@
 import React, {useContext} from 'react'
-import {ProductContext} from '../context'
+import {ProductContext} from '../../lib/context'
 import Link from 'next/link'
 import Image from 'next/image'
 

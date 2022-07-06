@@ -1,6 +1,6 @@
 import React, {useContext} from 'react'
 import Image from 'next/image'
-import {ProductContext} from "../context";
+import {ProductContext} from "../../lib/context";
 import Header from './header';
 
 function Post() {
@@ -8,6 +8,7 @@ function Post() {
     const post = useContext(ProductContext)
 
     const text = () =>{
+
         const textContent = post.getSelectedPost.body.map(res => {
             if(res.type === "paragraph"){
                 return <p className='text-prop' key={res.id}>{res.data.text}</p>
@@ -28,11 +29,15 @@ function Post() {
         })
         return textContent;
     }
-  return (
-    <div className="container">
+    
+     return(
+
+        <div className="container" >
         
-      <Header />
-        <p className='tag'>{post.getSelectedPost.tag[0]}</p>
+        <Header />
+
+       
+        <p className='tag'>{post.getSelectedPost?.tag[0]}</p>
         <h1 className='title'>{post.getSelectedPost.title}</h1>
 
         <div className="author-bio author-info">
@@ -49,7 +54,10 @@ function Post() {
         </div>
 
     </div>
-  )
+    
+    
+    
+    )
 }
 
 export default Post

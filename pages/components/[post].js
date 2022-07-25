@@ -3,10 +3,10 @@ import Image from 'next/image'
 import {ProductContext} from "../../lib/context";
 import Header from './header';
 
+
 function Post() {
     // use context consumer to get selected post
     const post = useContext(ProductContext)
-
 
     const text = () =>{
 
@@ -40,7 +40,7 @@ function Post() {
        {post.getSelectedPost && (
         <div>
         <p className='tag'>{post.getSelectedPost?.tag[0]}</p>
-        <h1 className='title'>{post.getSelectedPost.title}</h1>
+        <h1 className='title'>{post.getSelectedPost?.title}</h1>
 
         <div className="author-bio author-info">
             <Image src={post.getSelectedPost.authorsPhoto} alt="avatar" className='avatar' 

@@ -6,22 +6,22 @@ import Image from 'next/image'
 const Home = () => {
    
     const getPost = useContext(ProductContext)
-       
    
     const getFirstPostText = getPost?.post[0]?.body[0].data.text
     const getFirstFivePosts = getPost?.post.slice(0,5);
-    const getOtherPosts = getPost?.post.slice(4)
+    const getOtherPosts = getPost?.post.slice(4);
 
- 
+
 
   return (
     <div>
         <div>            
                     <div>
+                    
                        {
                         getPost && <div className='first-post'>
                             <p className='tag'>{getPost?.post[0]?.tag[0]}</p>
-                            <Link href="/components/post">
+                            <Link href={'/components/' + getPost?.post[0]?.postId} >
                                 <h2 onClick={()=>getPost.handlePostDetails(getPost?.post[0]?.postId)}>{getPost?.post[0]?.title}</h2>
                             
                             </Link>
@@ -48,7 +48,7 @@ const Home = () => {
                 return(
                     <div key={res.postId} className="mini-card module">
                         <p className='article-date'>Article on {res.date}</p>
-                        <Link href="/components/post">
+                        <Link href={'/components/' + res.postId}>
                         
                             <h4 
                             onClick={() =>getPost.handlePostDetails(res.postId)}>
@@ -80,8 +80,8 @@ const Home = () => {
 
                                     <div className='card' key={res.postId}>
                                         <p className='tag'>{res.tag[0]}</p>
-                                        <Link href="/components/post">
-                                            <h2 onClick={()=>getPost.handlePostDetails(res.postId)}>{res.title}</h2>
+                                        <Link href={'/components/' + res.postId}>
+                                            <h3 onClick={()=>getPost.handlePostDetails(res.postId)}>{res.title}</h3>
                                         
                                         </Link>
                                         <p className='post-intro'>{text}</p>

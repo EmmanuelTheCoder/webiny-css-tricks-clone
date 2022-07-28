@@ -1,61 +1,96 @@
-import React, {useContext} from 'react'
-import Image from 'next/image'
+import React, {useContext, useEffect, useState} from 'react'
+import Image from 'next/image';
+import {useRouter} from 'next/router';
+import {GraphQLClient, gql} from 'graphql-request'
 import {ProductContext} from "../../lib/context";
 import Header from './header';
+import { RichTextRenderer } from '@webiny/react-rich-text-renderer';
 
 
 function Post() {
-    // use context consumer to get selected post
-    const post = useContext(ProductContext)
-
-    const text = () =>{
-
-        const textContent = post.getSelectedPost.body.map(res => {
-            if(res.type === "paragraph"){
-                return <p className='text-prop' key={res.id}>{res.data.text}</p>
-            }else if(res.type === "header"){
-                return <h3 className='text-prop' key={res.id}>{res.data.text}</h3>
-            }else if (res.type === "list"){
-                res.data.items.map(val => {
-                    return(
-                        <ol className='text-prop' key={val}>
-                            <li>{val}</li>
-                        </ol>
-                    )
-                
-                })
-            }else{
-                return <p className='text-prop'>{res.data.text}</p>
-            }
-        })
-        return textContent;
-    }
+    const [getPost, setGetPost] = useState()
+ 
+    const router = useRouter()
     
+    const {post} = router.query
+    
+
+    useEffect(() =>{
+        async function callApi(){
+            
+            const endpoint = process.env.NEXT_PUBLIC_CMS_ENPOINT
+       
+           const graphQLClient = new GraphQLClient(endpoint, {
+               headers: {
+                   authorization: process.env.NEXT_PUBLIC_TOKEN_SECRET
+               }
+           })
+   
+           //query cms data
+   
+           const queryRequest = gql`
+                query getBlog($post: String) {
+                   listBlogs(where: {
+                    postId: $post
+                   }){
+                   data{
+                       postId
+                       title
+                       body
+                       authorsPhoto
+                       contentPhoto
+                       date
+                       author
+                       tag
+                       
+                   }
+               }
+               
+           }
+           
+           `
+           const variables = {
+            post: post
+           }
+           const data = await graphQLClient.request(queryRequest, variables)
+           setGetPost(data.listBlogs.data)
+           data.listBlogs.data.map(res => setGetPost(res))
+
+           
+           
+           
+        } 
+        callApi()
+    }, [])
+    
+
      return(
 
         <div className="container" >
         
         <Header />
 
-       {post.getSelectedPost && (
+       {getPost && (
         <div>
-        <p className='tag'>{post.getSelectedPost?.tag[0]}</p>
-        <h1 className='title'>{post.getSelectedPost?.title}</h1>
+        <p className='tag'>{getPost?.tag[0]}</p>
+        <h1 className='title'>{getPost?.title}</h1>
 
         <div className="author-bio author-info">
-            <Image src={post.getSelectedPost.authorsPhoto} alt="avatar" className='avatar' 
+            <Image src={getPost.authorsPhoto} alt="avatar" className='avatar' 
             width={40} height={40} layout="fixed" />
-            <p className='author'>{post.getSelectedPost.author}</p>
-            <p className='date'>{post.getSelectedPost.date}</p>
+            <p className='author'>{getPost.author}</p>
+            <p className='date'>{getPost.date}</p>
         </div>
+        
         <div className="article-sponsor">
             <p>DigitalOcean joining forces with CSS-Tricks! Special welcome offer: get $100 of free credit.</p>
         </div>
         <div className="post-content">
-                {text()}
+            <RichTextRenderer data={getPost?.body} />     
         </div>
         </div>
         )}
+
     </div>
     
     

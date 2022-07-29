@@ -26,7 +26,7 @@ body{
     font-size: 1.1rem;
     margin-top: 1.05rem;
     padding-left: .2rem;
-    font-family: 'MD Primer Bold', Rubik, Lato, 'Lucida Grande', 'Lucida Sans Unicode',Tahoma,Sans-Serif;
+    font-family: 'Oxygen', sans-serif;
 }
 
 .header h1{
@@ -260,7 +260,7 @@ body{
     padding-bottom: 2rem;
     margin-bottom: 3rem;
     padding: .6rem;
-    font-size: 1.1rem;
+    font-size: .9rem;
     font-family: 'Oxygen', sans-serif;
 }
 .text-prop{
@@ -311,7 +311,7 @@ body{
     margin: -.5rem -.5rem 0 -.5rem;
 }
 .footer-container h5{
-    font-family: 'MD Primer Bold', Rubik, Lato, 'Lucida Grande', 'Lucida Sans Unicode',Tahoma,Sans-Serif;
+    font-family: 'Oxygen', sans-serif;
     color: #ff7a18
 }
 .footer-elements-container{

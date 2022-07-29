@@ -2,7 +2,6 @@ import React, {useContext, useEffect, useState} from 'react'
 import Image from 'next/image';
 import {useRouter} from 'next/router';
 import {GraphQLClient, gql} from 'graphql-request'
-import {ProductContext} from "../../lib/context";
 import Header from './header';
 import { RichTextRenderer } from '@webiny/react-rich-text-renderer';
 

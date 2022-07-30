@@ -26,7 +26,7 @@ body{
     font-size: 1.1rem;
     margin-top: 1.05rem;
     padding-left: .2rem;
-    font-family: 'Oxygen', sans-serif;
+    font-family: 'Rubik', sans-serif;
 }
 
 .header h1{
@@ -63,12 +63,13 @@ body{
     }
     .nav-bar p{
         font-size: .8rem;
-        margin-top: 1.26rem;
+        margin-top: 1.28rem;
         padding-left: 2rem;
     }
     .nav-bar{
         overflow-x: hidden;
     }
+    
 }
 
 .first-post{
@@ -124,11 +125,17 @@ body{
     display: flex;
     margin-left: .9rem;
     
+    
+}
+.author{
+    font-family: 'Rubik', sans-serif;
+    font-weight: 800;
 }
 .author-info p{
     padding-left: .5rem;
     font-size: .9rem;
     font-family: 'Oxygen', sans-serif;
+    
 }
 .date{
    padding-left: .4rem; 
@@ -180,6 +187,11 @@ body{
     position: absolute;
     bottom: 0;
 }
+.firstFourAvatar p{
+    font-family: 'Rubik', sans-serif;
+    font-weight: 500;
+    font-size: .8rem;
+}
 .aside-post-container{
     display: flex;
     margin-left: 4rem;   
@@ -205,7 +217,7 @@ body{
     margin-bottom: 1.4rem;
     box-sizing: border-box;
     width: 97%;
-    
+    height: 80%;
     padding: 0 .3rem;
     word-wrap: break-word;
     border-radius: 15px;
@@ -238,12 +250,17 @@ body{
 .container .tag{
     color: #ffdfc7;
     font-family: 'Oxygen', sans-serif;
+    margin-top: -1.1rem;
 }
 
 .container .title{
     color: #fff;
     margin-top: -.9rem;
     margin-left: 1rem;
+    font-size: 2rem;
+    width: 90%;
+    font-family: 'Rubik', sans-serif;
+
 }
 .author-bio{
     color: #fff;
@@ -345,5 +362,14 @@ body{
     .poweredby{
         width: 30%;
         box-sizing: border-box;
+    }
+}
+
+@media (min-width: 1200px){
+    .container .title{
+        font-size: 3.5rem;
+        width: 70%;
+        word-wrap: break-word;
+
     }
 }

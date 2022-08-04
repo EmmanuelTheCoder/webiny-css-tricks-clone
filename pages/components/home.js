@@ -12,7 +12,7 @@ const Home = () => {
     const getOtherPosts = getPost?.post.slice(4);
     
     const getParagraph = getPost?.post[0]?.body.filter(post => post.type === "paragraph")?.slice(0,2);
-    console.log("paragraph", getParagraph) 
+    
 
   return (
     <div>
@@ -22,17 +22,16 @@ const Home = () => {
                        {
                         getPost && getParagraph && 
                         <div className='firstPostContainer'>
-                            <Link href={'/components/' + getPost?.post[0]?.postId}>
-                                <div className='image-div'>
-                                <Image src={getPost?.post[0]?.contentPhoto} alt="avatar" 
-                                className='firstPostImage'
-                                width={500}
-                                height={300}
-                                layout="fill"
-                                />
-                                </div>
+                            <div className='image-div'>
+                                    <Image src={getPost?.post[0]?.contentPhoto} alt="avatar" 
+                                    className='firstPostImage'
+                                    width={500}
+                                    height={300}
+                                    layout="fill"
+                                    />
                             
-                            </Link>
+                            </div>
+                            
 
                             <div className='first-post'>
                             

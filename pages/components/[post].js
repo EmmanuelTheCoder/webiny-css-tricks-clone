@@ -60,7 +60,7 @@ function Post() {
            
         } 
         callApi()
-    }, [])
+    }, [post])
     
 
      return(
